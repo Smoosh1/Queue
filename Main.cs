@@ -9,8 +9,7 @@ namespace ConsoleApp79
     class Program
     {
         static void Main(string[] args)
-        {
-            
+       
             var queue = new Queue<int>();
 
             queue.Enqueue(1);   
@@ -20,11 +19,18 @@ namespace ConsoleApp79
             queue.Enqueue(-17);
             Console.WriteLine($"Тут {queue.Count} элементов.");
 
-            /*А теперь нужно эту всю херабору в мейн запихнуть 
-            var _Num = queue.Top();
-            Console.WriteLine($"Первый элемент из очереди {_Num}.");*/
+              
+            var _Num = queue.Enqueue();
+            Console.WriteLine($"Первый элемент из очереди {_Num}.";
+            
+            var After_Deleting_Num = queue.Pop();
+            Console.WriteLine($"Теперь первый элемент очереди { After_Deleting_Num }.");
+            
+            var First_Num = queue.Top();
+            Console.WriteLine($"Вставили элемент на позицию и верхний элемент теперь { First_Num }.");
+            var pushing_Num = queue.Push();
+            Console.WriteLine($"Вставили{ pushing_Num }.");
 
             Console.ReadLine();
-        }
     }
 }
