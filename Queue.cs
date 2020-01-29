@@ -1,69 +1,49 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 
-namespace Queue
+namespace ConsoleApp57
 {
-    namespace Queue
+    class Queue<Number>
     {
 
-        public class Queue<Number>
+        private List<Number> _number = new List<Number>();
+        public int Count => _number.Count;
+
+        private int first = -1;
+
+
+        public void Push(Number _Num)
+        {             
+            _number.Add(_Num);
+            if (first == -1)
+                first = 0;
+
+        }
+
+  
+
+        public Number Top()
         {
-            #region Инициализация, ничего больше
-            private List<Number> _number = new List<Number>();
-            public int Count => _number.Count;
-            #endregion
-            #region вставляем элемент на позицию 
+            var _Num = GetFirsNumber();
+            return _Num;
+        }
 
-            public void ChoosePopNum(ref int _ChoosenNum)
+        public void Pop(Number _Num)
+        {
+            _number.RemoveAt(first);
+        }
+
+        public Number GetFirsNumber()
+        {
+            var _FirsNum = _number.FirstOrDefault();
+
+            if (_FirsNum == null)
             {
-                Console.WriteLine("Выберите позицию элементика который надо вставить ");
-                _ChoosenNum = int.Parse(Console.ReadLine());
+                Console.WriteLine("Очередь пуста. Нет элементов для получения.");
             }
-
-            public void Push(Number _Num, ref int _ChoosenNum)
-            {
-                if (_ChoosenNum > _number.Count)
-                {
-                    Console.WriteLine("Введи нормальное число");
-                }
-                else
-                {
-                    var Last_Num = _number[_number.Count - _ChoosenNum];
-                }
-                _number.Insert(_ChoosenNum,_Num);
-            }
-
-            #endregion
-            #region смотрим на первый элемент 
-
-            public Number Top()
-            {
-                var _Num = GetFirsNumber();
-                return _Num;
-            }
-            #endregion
-            #region удаляем первый элемент
-            public void Pop(Number _Num)
-            {
-                 //_Num.RemoveAt(0);
-
-            }
-            #endregion
-            #region Ищу первый элемент
-            private Number GetFirsNumber()
-            {
-                var _FirsNum = _number.FirstOrDefault();
-
-                if (_FirsNum == null)
-                {
-                    Console.WriteLine("Очередь пуста. Нет элементов для получения.");
-                }
-                return _FirsNum;
-            }
-            #endregion
+            return _FirsNum;
         }
     }
 }
