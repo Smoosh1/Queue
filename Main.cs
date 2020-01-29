@@ -1,36 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace ConsoleApp79
+namespace ConsoleApp57
 {
     class Program
     {
         static void Main(string[] args)
-       
+        {
             var queue = new Queue<int>();
 
-            queue.Enqueue(1);   
-            queue.Enqueue(7);
-            queue.Enqueue(42);
-            queue.Enqueue(69);
-            queue.Enqueue(-17);
+            queue.Push(1);
+            queue.Push(7);
+            queue.Push(42);
+            queue.Push(69);
+            queue.Push(-17);
+
+                                                                    
             Console.WriteLine($"Тут {queue.Count} элементов.");
 
-              
-            var _Num = queue.Enqueue();
-            Console.WriteLine($"Первый элемент из очереди {_Num}.";
-            
-            var After_Deleting_Num = queue.Pop();
-            Console.WriteLine($"Теперь первый элемент очереди { After_Deleting_Num }.");
-            
-            var First_Num = queue.Top();
-            Console.WriteLine($"Вставили элемент на позицию и верхний элемент теперь { First_Num }.");
-            var pushing_Num = queue.Push();
-            Console.WriteLine($"Вставили{ pushing_Num }.");
+
+            var _Num = queue.GetFirsNumber();
+            Console.WriteLine(_Num);
+
+           
+            int _Num_Pop = int.Parse(Console.ReadLine());
+            queue.Pop(_Num_Pop);
+
+            int _Num_Push = int.Parse(Console.ReadLine());
+            queue.Push(_Num_Push);
 
             Console.ReadLine();
+        }
     }
 }
